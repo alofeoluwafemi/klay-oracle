@@ -1,0 +1,36 @@
+{
+  "active": true,
+  "adapter_name": "ETH/USD",
+  "job_type": "DATA_FEED",
+  "adapter_id": "efbdab54-4195-11ed-b878-0242ac120002",
+  "oracle": "0xDC77A7A497C9a9A7C086E3d57bFb753fF2cFa414",
+  "feeds": [
+    {
+      "resource": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD",
+      "headers": {
+      },
+      "reducers": [
+        {
+          "function": "PARSE",
+          "args": ["RAW","ETH","USD"]
+        },
+        {
+          "function": "MUL",
+          "args": [1000000000000000000]
+        }
+      ]
+    },
+    {
+      "resource": "https://rest.coinapi.io/v1/exchangerate/ETH/USD",
+      "headers": {
+        "X-CoinAPI-Key": "209D7E0E-9330-4706-B693-6E2ED10279A5"
+      },
+      "reducers": [
+        {
+          "function": "MUL",
+          "args": [1000000000000000000]
+        }
+      ]
+    }
+  ]
+}

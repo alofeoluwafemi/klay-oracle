@@ -1,0 +1,33 @@
+{
+  "active": false,
+  "adapter_name": "ETH/USD",
+  "type": "data_feed",
+  "adapter_id": "efbdab54-4195-11ed-b878-0242ac120002",
+  "oracle": "0xDC77A7A497C9a9A7C086E3d57bFb753fF2cFa414",
+  "feeds": [
+    {
+      "resource": "https://",
+      "reducers": [
+        {
+          "function": "ADD",
+          "args": [0]
+        },
+        {
+          "function": "MUL",
+          "args": [1]
+        },
+        {
+          "function": "DIV",
+          "args": [1]
+        },
+        {
+          "function": "PARSE",
+          "args": ["keyA","keyB"]
+        },
+        {
+          "function": "Bytes32"
+        }
+      ]
+    }
+  ]
+}
