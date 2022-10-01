@@ -6,7 +6,11 @@
   "oracle": "0xDC77A7A497C9a9A7C086E3d57bFb753fF2cFa414",
   "feeds": [
     {
-      "url": "https://",
+      "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD",
+      "headers": [
+        {"Content-Type" :  "application/json"}
+      ],
+      "request_type": "GET",
       "reducers": [
         {
           "function": "ADD",
@@ -25,7 +29,19 @@
           "args": ["keyA","keyB"]
         },
         {
-          "function": "BYTE32"
+          "function": "HEXDECODE",
+          "args": ["0x12345678"]
+        },
+        {
+          "function": "ETHABIDECODELOG",
+          "args": [
+            "Transfer(address,address,uint256)",
+            [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              null,
+              "0x0000000000000000000000008ba1f109551bd432803012645ac136ddd64dba72"
+            ]
+          ]
         }
       ]
     }

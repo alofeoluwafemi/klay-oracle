@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/alofeoluwafemi/klay-oracle/adapter"
+	"github.com/alofeoluwafemi/klay-oracle/node"
 	"log"
 )
 
@@ -11,4 +12,6 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+
+	node.LoadReducers()
 }

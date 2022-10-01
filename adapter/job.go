@@ -24,6 +24,7 @@ type Reducer struct {
 
 type Feed struct {
 	Url string `json:"url"`
+	RequestType string `json:"request_type"`
 	Headers []map[string]string `json:"headers"`
 	Reducers []Reducer `json:"reducers"`
 }

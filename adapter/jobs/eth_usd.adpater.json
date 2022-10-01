@@ -10,6 +10,7 @@
       "headers": [
         {"Content-Type" :  "application/json"}
       ],
+      "request_type": "GET",
       "reducers": [
         {
           "function": "PARSE",
