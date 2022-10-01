@@ -8,7 +8,7 @@
     {
       "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD",
       "headers": [
-        {"Content-type" :  "json"}
+        {"Content-Type" :  "application/json"}
       ],
       "reducers": [
         {
