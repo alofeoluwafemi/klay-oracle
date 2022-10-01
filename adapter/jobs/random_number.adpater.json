@@ -1,5 +1,5 @@
 {
-  "adapter_name": "Random Number",
+  "name": "Random Number",
   "type": "random_number",
   "adapter_id": "efbdae1a-4195-11ed-b878-0242ac120002"
 }
