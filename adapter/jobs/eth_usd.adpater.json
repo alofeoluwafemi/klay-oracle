@@ -14,7 +14,7 @@
       "reducers": [
         {
           "function": "PARSE",
-          "args": ["RAW","ETH","USD"]
+          "args": ["RAW","ETH","USD","PRICE"]
         },
         {
           "function": "MUL",

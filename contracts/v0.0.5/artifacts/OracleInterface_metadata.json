@@ -1,0 +1,99 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "data",
+						"type": "bytes32"
+					}
+				],
+				"name": "fulfillOracleRequest",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "callbackFunctionId",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "string",
+						"name": "adapterID",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "callBackContract",
+						"type": "address"
+					}
+				],
+				"name": "newOracleRequest",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/contracts/v0.0.5/OracleInterface.sol": "OracleInterface"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/contracts/v0.0.5/OracleInterface.sol": {
+			"keccak256": "0x308ab89a79dfa94ec171fa27f25303ba6adbdd00a37052a74da9cb125e7ce57e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f36328be2acca09b46b2362350756b9240934a4a86ff0810df3a59ed95c5c460",
+				"dweb:/ipfs/QmR7AekoGFNLThLEbAZsqX8X3ZpSxM9iCQJd2kQd9GmNit"
+			]
+		}
+	},
+	"version": 1
+}

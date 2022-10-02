@@ -8,10 +8,6 @@ import (
 	"path/filepath"
 )
 
-type AdapterType interface {
-	getTypeName() string
-}
-
 const (
 	TypeFeed = "DATA_FEED"
 	TypeRDN = "RANDOM_NUMBER"

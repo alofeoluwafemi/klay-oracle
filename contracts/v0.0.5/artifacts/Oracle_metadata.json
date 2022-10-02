@@ -1,0 +1,212 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nodeAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_adapterId",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "adapterId",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					}
+				],
+				"name": "NewOracleRequest",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "adapterId",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "data",
+						"type": "bytes32"
+					}
+				],
+				"name": "fulfillOracleRequest",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "callbackFunctionId",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "string",
+						"name": "adapterID",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "callBackContract",
+						"type": "address"
+					}
+				],
+				"name": "newOracleRequest",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nodeAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "requests",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "nodeAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "adapterId",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes4",
+						"name": "callbackFunctionId",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "address",
+						"name": "callBackContract",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "data",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/contracts/v0.0.5/Oracle.sol": "Oracle"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/contracts/v0.0.5/Oracle.sol": {
+			"keccak256": "0xb3207acf58dff1abdd7583bb3c74b62df9c9f37874e859dca34b605f2a1b8433",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5775808fbd9e0fe1ffa6c9edafdba796c645c71bb7e6c426e045845f0ed8b9ff",
+				"dweb:/ipfs/Qmb64FXaS9t1Yp52KikiAxrE5EBRwxCNFZiRp4BJnbRf3U"
+			]
+		},
+		"Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/contracts/v0.0.5/OracleInterface.sol": {
+			"keccak256": "0x308ab89a79dfa94ec171fa27f25303ba6adbdd00a37052a74da9cb125e7ce57e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f36328be2acca09b46b2362350756b9240934a4a86ff0810df3a59ed95c5c460",
+				"dweb:/ipfs/QmR7AekoGFNLThLEbAZsqX8X3ZpSxM9iCQJd2kQd9GmNit"
+			]
+		}
+	},
+	"version": 1
+}

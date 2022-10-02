@@ -1,17 +1,13 @@
 package main
 
 import (
-	"github.com/alofeoluwafemi/klay-oracle/adapter"
-	"github.com/alofeoluwafemi/klay-oracle/node"
-	"log"
+	"fmt"
+	"github.com/klaytn/klaytn/common"
 )
 
 func main() {
-	err := adapter.LoadJobs()
+// 	node.Boot()
+// 	node.Run()
 
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	node.LoadReducers()
+	fmt.Println(common.HexToHash("2").Hex())
 }
