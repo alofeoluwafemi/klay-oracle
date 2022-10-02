@@ -1,7 +1,7 @@
 package klay_oracle
 
 
-//Create Node
+//Create Node Wallet
 //Get Node account
 //Get Node account balance
 //Start Node

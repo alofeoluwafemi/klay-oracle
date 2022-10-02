@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  klay-oracle-node:
+    build:
+      context: ../node
+    volumes:
+      - .:/klay_oracle
+    command: node
+    restart: on-failure
+    environment:
+      - JOBS_PATH=${JOBS_PATH}

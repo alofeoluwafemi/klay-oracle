@@ -1,13 +1,22 @@
 package main
 
 import (
-	"fmt"
-	"github.com/klaytn/klaytn/common"
+	"github.com/alofeoluwafemi/klay-oracle/node"
+	"log"
+	"os"
+	"path/filepath"
 )
 
 func main() {
-// 	node.Boot()
-// 	node.Run()
+	jobsDir := os.Getenv("JOBS_PATH")
 
-	fmt.Println(common.HexToHash("2").Hex())
+	wd, err := os.Getwd()
+	if err != nil {
+		 log.Fatalf("%v", err)
+	}
+
+	jobsPath := filepath.Join(wd, jobsDir)
+
+	node.Boot(jobsPath)
+	node.Run()
 }

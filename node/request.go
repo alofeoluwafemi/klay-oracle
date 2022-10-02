@@ -1,7 +1,5 @@
 package node
 
-import "github.com/alofeoluwafemi/klay-oracle/adapter"
-
-func Request(job adapter.Job) interface{} {
+func Request(job Job) interface{} {
 	return nil
 }

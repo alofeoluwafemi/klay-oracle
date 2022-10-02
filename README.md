@@ -51,3 +51,12 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 - **Adapter**
 - **Oracle Contract**
 - **KlayOracle Node**
+
+
+# Setup
+
+## Set Adapter Path for Node
+
+```markdown
+JOBS_PATH=../adapter/jobs node
+```
