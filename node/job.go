@@ -11,35 +11,34 @@ import (
 
 const (
 	TypeFeed = "DATA_FEED"
-	TypeRDN = "RANDOM_NUMBER"
+	TypeRDN  = "RANDOM_NUMBER"
 )
 
 type Reducer struct {
-	Function string `json:"function"`
-	Args []interface{} `json:"args"`
+	Function string        `json:"function"`
+	Args     []interface{} `json:"args"`
 }
 
 type Feed struct {
-	Url string `json:"url"`
-	RequestType string `json:"request_type"`
-	Headers []map[string]string `json:"headers"`
-	Reducers []Reducer          `json:"reducers"`
+	Url         string              `json:"url"`
+	RequestType string              `json:"request_type"`
+	Headers     []map[string]string `json:"headers"`
+	Reducers    []Reducer           `json:"reducers"`
 }
 
 type Job struct {
-	Active bool `json:"active"`
-	Name string `json:"name"`
-	JobType string `json:"job_type"`
+	Active    bool   `json:"active"`
+	Name      string `json:"name"`
+	JobType   string `json:"job_type"`
 	AdapterId string `json:"adapter_id"`
-	Oracle string `json:"oracle"`
-	Feeds []Feed  `json:"feeds"`
+	Oracle    string `json:"oracle"`
+	Feeds     []Feed `json:"feeds"`
 }
 
 var (
 	Jobs []*Job
 	Fsys fs.FS
 )
-
 
 func LoadJobs(jobsPath string) error {
 
@@ -56,7 +55,7 @@ func LoadJobs(jobsPath string) error {
 	return nil
 }
 
-func walkJobs(path string, d fs.DirEntry, err error) error  {
+func walkJobs(path string, d fs.DirEntry, err error) error {
 	configFileName := filepath.Base(path)
 
 	if configFileName != "." {
@@ -77,10 +76,10 @@ func walkJobs(path string, d fs.DirEntry, err error) error  {
 		if job.Active == true {
 			Jobs = append(Jobs, job)
 
-			log.Printf("Loaded Job %+v with active:true",job.Name)
+			log.Printf("Loaded Job %+v with active:true", job.Name)
 		}
 
-		log.Printf("Ignoring Job %+v with active:false",job.Name)
+		log.Printf("Ignoring Job %+v with active:false", job.Name)
 	}
 
 	return nil

@@ -19,29 +19,27 @@ func Boot(jobsPath string) {
 }
 
 func Run() {
-//Loop through Jobs
-//Listen to Oracle for a Certain Event on Address
-//When Event fires
+	//Loop through Jobs
+	//Listen to Oracle for a Certain Event on Address
+	//When Event fires
 
-//requestId := 0
-adapterId := "efbdab54-4195-11ed-b878-0242ac120002"
+	// requestId := 0
+	adapterId := "efbdab54-4195-11ed-b878-0242ac120002"
 
-for i := 0; i < len(Jobs); i++{
-	if job := Jobs[i]; job.AdapterId == adapterId {
-		job.process()
-		continue
+	for i := 0; i < len(Jobs); i++ {
+		if job := Jobs[i]; job.AdapterId == adapterId {
+			job.process()
+		}
 	}
-}
 
-
-//Make Request to URL Based on Type & Headers
-//Perform Reducer Action
-//Call Oracle with Response
-//Keep Listening for Further event
+	// Make Request to URL Based on Type & Headers
+	// Perform Reducer Action
+	// Call Oracle with Response
+	// Keep Listening for Further event
 }
 
 func (job Job) process() {
-	//var results []string
+	var results []string
 
 	for i := 0; i < len(job.Feeds); i++ {
 		feed := job.Feeds[i]
@@ -56,6 +54,7 @@ func (job Job) process() {
 			}
 		}
 
+		// Todo, switch between GET or POST request
 		resp, err := client.R().
 			EnableTrace().
 			Get(feed.Url)
@@ -71,7 +70,6 @@ func (job Job) process() {
 			reducer := feed.Reducers[k]
 			args := reducer.Function
 
-			//body := resp
 			function := Reducers[args]
 			argument := reducer.Args
 
@@ -86,8 +84,10 @@ func (job Job) process() {
 			body = fmt.Sprintf("%v", response)
 		}
 
-		fmt.Println("Complete Job: ",body)
-		continue
-	}
-}
+		results = append(results, body)
 
+		log.Printf("Result for job %v is %v",job.Name, body)
+	}
+
+	log.Printf("Results for adapter %v : %+v", job.AdapterId, results )
+}

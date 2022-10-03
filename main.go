@@ -12,7 +12,7 @@ func main() {
 
 	wd, err := os.Getwd()
 	if err != nil {
-		 log.Fatalf("%v", err)
+		log.Fatalf("%v", err)
 	}
 
 	jobsPath := filepath.Join(wd, jobsDir)

@@ -21,6 +21,22 @@
           "args": [1000000000000000000]
         }
       ]
+    },
+    {
+      "url": "https://rest.coinapi.io/v1/exchangerate/ETH/USD",
+      "headers": [
+        {"X-CoinAPI-Key": "209D7E0E-9330-4706-B693-6E2ED10279A5"}
+      ],
+      "reducers": [
+        {
+          "function": "PARSE",
+          "args": ["rate"]
+        },
+        {
+          "function": "MUL",
+          "args": [1000000000000000000]
+        }
+      ]
     }
   ]
 }

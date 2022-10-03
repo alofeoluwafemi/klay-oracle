@@ -29,6 +29,10 @@
       ],
       "reducers": [
         {
+          "function": "PARSE",
+          "args": ["rate"]
+        },
+        {
           "function": "MUL",
           "args": [1000000000000000000]
         }
