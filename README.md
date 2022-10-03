@@ -4,7 +4,7 @@
 
 ## Learn More
 
-![Visit KlayOracle Website](https://klayoracle.com)
+[Visit KlayOracle Website](https://klayoracle.com)
 
 ### What is KlayOracle
 
