@@ -1,6 +1,11 @@
 
 
 ![What is KlayOracle](https://s3.amazonaws.com/alofe.oluwafemi/Klay+Oracle+Hero++Banner.jpg)
+
+## Learn More
+
+![Visit KlayOracle Website](https://klayoracle.com)
+
 ### What is KlayOracle
 
 KlayOracle adopts the design used by leading and existing oracles to bring offchain data to Klaytn Smart Contracts. Its straight forward to setup to access offchain data such as prices, sport data, weather data, random numbers or any external API usecase suites your project purpose.

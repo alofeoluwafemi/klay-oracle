@@ -1,6 +1,6 @@
 {
   "active": true,
-  "name": "ETH_USD",
+  "name": "KLAY_USD",
   "job_type": "DATA_FEED",
   "adapter_id": "efbdab54-4195-11ed-b878-0242ac120002",
   "oracle": "0xDC77A7A497C9a9A7C086E3d57bFb753fF2cFa414",
