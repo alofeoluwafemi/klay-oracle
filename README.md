@@ -58,5 +58,5 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 ## Set Adapter Path for Node
 
 ```markdown
-JOBS_PATH=../adapter/jobs node
+JOBS_PATH=adapter/jobs go run main.go 
 ```
