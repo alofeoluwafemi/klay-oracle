@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/go-resty/resty/v2"
 	"log"
+	"math/rand"
 )
 
 func Boot(jobsPath string) {
@@ -24,14 +25,15 @@ func Run() {
 	//When Event fires
 
 	// requestId := 0
-	adapterId := "550a752a-4351-11ed-b878-0242ac120002"
+	adapterId := "efbdab54-4195-11ed-b878-0242ac120002"
 
 	for i := 0; i < len(Jobs); i++ {
 		if job := Jobs[i]; job.AdapterId == adapterId {
 			jobResponses := job.process()
-
+			randomIndex := rand.Intn(len(jobResponses))
+			selected := jobResponses[randomIndex]
 			//Get mean and call oracle with response
-			fmt.Println(jobResponses)
+			fmt.Printf("\nResponse for Oracle %v\n",selected)
 		}
 	}
 
@@ -82,17 +84,16 @@ func (job Job) process() []string {
 				log.Fatalf("Error while running reducer %v on job %v ", reducer, job.Name)
 			}
 
-			fmt.Println(response)
-
 			body = fmt.Sprintf("%v", response)
+
+			log.Printf("Result for %v -> %+v : %v", job.Name, reducer , body)
 		}
 
 		results = append(results, body)
 
-		log.Printf("Result for job %v is %v",job.Name, body)
 	}
 
-	log.Printf("Results for adapter %v : %+v", job.AdapterId, results )
+	log.Printf("Results for adapter %v are : %+v", job.AdapterId, results )
 
 	return results
 }

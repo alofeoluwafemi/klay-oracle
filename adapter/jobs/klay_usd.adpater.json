@@ -1,12 +1,12 @@
 {
-  "active": false,
+  "active": true,
   "name": "ETH_USD",
   "job_type": "DATA_FEED",
   "adapter_id": "efbdab54-4195-11ed-b878-0242ac120002",
   "oracle": "0xDC77A7A497C9a9A7C086E3d57bFb753fF2cFa414",
   "feeds": [
     {
-      "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD",
+      "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=KLAY&tsyms=USD",
       "headers": [
         {"Content-Type" :  "application/json"}
       ],
@@ -14,7 +14,7 @@
       "reducers": [
         {
           "function": "PARSE",
-          "args": ["RAW","ETH","USD","PRICE"]
+          "args": ["RAW","KLAY","USD","PRICE"]
         },
         {
           "function": "MUL",
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "url": "https://rest.coinapi.io/v1/exchangerate/ETH/USD",
+      "url": "https://rest.coinapi.io/v1/exchangerate/KLAY/USD",
       "headers": [
         {"X-CoinAPI-Key": "209D7E0E-9330-4706-B693-6E2ED10279A5"}
       ],

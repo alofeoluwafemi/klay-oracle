@@ -6,7 +6,7 @@
   "oracle": "0xDC77A7A497C9a9A7C086E3d57bFb753fF2cFa414",
   "feeds": [
     {
-      "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD",
+      "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=KLAY&tsyms=USD",
       "headers": [
         {"Content-Type" :  "application/json"}
       ],

@@ -23,7 +23,7 @@ func PARSE(jsonInterface interface{}, args ...interface{}) (interface{}, error) 
 
 	jsonString := jsonInterface.(string)
 
-	fmt.Println("RESPONSE: ",jsonString)
+	fmt.Printf("\nPARSE:%v \n",jsonString)
 
 	err := json.Unmarshal([]byte(jsonString), &result)
 	if err != nil {
@@ -32,7 +32,6 @@ func PARSE(jsonInterface interface{}, args ...interface{}) (interface{}, error) 
 
 	for i := 0; i < len(args); i++ {
 		index := args[i].(string)
-		fmt.Println("Key: ", index)
 
 		if i == (len(args) - 1) {
 			return result[index], nil
