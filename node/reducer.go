@@ -19,10 +19,11 @@ func LoadReducers() {
 }
 
 func PARSE(jsonInterface interface{}, args ...interface{}) (interface{}, error) {
-
 	var result map[string]interface{}
 
 	jsonString := jsonInterface.(string)
+
+	fmt.Println("RESPONSE: ",jsonString)
 
 	err := json.Unmarshal([]byte(jsonString), &result)
 	if err != nil {
@@ -120,6 +121,5 @@ func DIV(value interface{}, args ...interface{}) (interface{}, error) {
 		bigTotalF64 = bigTotalF64 / bigNumF64
 	}
 
-	bigTotalStr := fmt.Sprintf("%.0f", bigTotal)
-	return bigTotalStr, nil
+	return fmt.Sprintf("%.0f", big.NewFloat(bigTotalF64)), nil
 }

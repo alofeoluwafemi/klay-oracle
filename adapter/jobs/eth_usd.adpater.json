@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "name": "ETH_USD",
   "job_type": "DATA_FEED",
   "adapter_id": "efbdab54-4195-11ed-b878-0242ac120002",

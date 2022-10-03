@@ -24,11 +24,14 @@ func Run() {
 	//When Event fires
 
 	// requestId := 0
-	adapterId := "efbdab54-4195-11ed-b878-0242ac120002"
+	adapterId := "550a752a-4351-11ed-b878-0242ac120002"
 
 	for i := 0; i < len(Jobs); i++ {
 		if job := Jobs[i]; job.AdapterId == adapterId {
-			job.process()
+			jobResponses := job.process()
+
+			//Get mean and call oracle with response
+			fmt.Println(jobResponses)
 		}
 	}
 
@@ -38,7 +41,7 @@ func Run() {
 	// Keep Listening for Further event
 }
 
-func (job Job) process() {
+func (job Job) process() []string {
 	var results []string
 
 	for i := 0; i < len(job.Feeds); i++ {
@@ -90,4 +93,6 @@ func (job Job) process() {
 	}
 
 	log.Printf("Results for adapter %v : %+v", job.AdapterId, results )
+
+	return results
 }

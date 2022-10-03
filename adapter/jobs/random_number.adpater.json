@@ -1,5 +1,24 @@
 {
-  "name": "Random Number",
-  "type": "random_number",
-  "adapter_id": "efbdae1a-4195-11ed-b878-0242ac120002"
+  "active": true,
+  "name": "RAND",
+  "job_type": "RANDOM_NUMBER",
+  "adapter_id": "550a752a-4351-11ed-b878-0242ac120002",
+  "oracle": "0x3472059945ee170660a9A97892a3cf77857Eba3A",
+  "feeds": [
+    {
+      "url": "https://random-number2.p.rapidapi.com?min=9999&max=999999",
+      "headers": [
+        {"Content-Type" :  "application/json"},
+        {"X-RapidAPI-Key" :  "7b51d2e2d0msh13d3226d725be02p1eea9cjsn45f324819d23"},
+        {"X-RapidAPI-Host" :  "random-number2.p.rapidapi.com"}
+      ],
+      "request_type": "GET",
+      "reducers": [
+        {
+          "function": "PARSE",
+          "args": ["data","random_number"]
+        }
+      ]
+    }
+  ]
 }

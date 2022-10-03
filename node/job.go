@@ -77,9 +77,9 @@ func walkJobs(path string, d fs.DirEntry, err error) error {
 			Jobs = append(Jobs, job)
 
 			log.Printf("Loaded Job %+v with active:true", job.Name)
+		}else{
+			log.Printf("Ignoring Job %+v with active:false", job.Name)
 		}
-
-		log.Printf("Ignoring Job %+v with active:false", job.Name)
 	}
 
 	return nil
