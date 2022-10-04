@@ -25,15 +25,16 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 
 ### Hackathon Milestone
 
-| Goal | Status | Comment |
-|--|--|--|
-| Figma Design for Website | Done :white_check_mark:  | https://bit.ly/3LWehun
-|KlayOracle Website| In Progress| |
-|KlayOracle v0.0.5 Adapter| In Progress| |
-|KlayOracle v0.0.5 Node| In Progress| |
-|KlayOracle v0.0.5 Oracle Contract| In Progress| |
-|KlayOracle Deploy on testnet| Pending| |
-|KlayOracle Video tutorial| Pending| |
+| Goal      | Status | Comment     |
+| :---        |    :----:   |          ---: |
+| Figma Design for Website      | Done      | https://bit.ly/3LWehun    |
+| KlayOracle Website   | Done        | https://klayoracle.com      |
+| KlayOracle v0.0.5 Adapter   | Done        | https://bit.ly/3C8fLNy      |
+| KlayOracle v0.0.5 Oracle Contract   | Done        | https://bit.ly/3SMqPGY      |
+| KlayOracle v0.0.5 Node   | In Progress        | https://bit.ly/3SMqPGY      |
+| Developer Documentation   | In Progress        | https://bit.ly/3SMqPGY      |
+| KlayOracle Baobab Deploy   | Pending        | -      |
+| Video Tutorial   | Pending        | -      |
 
 ### Post Hackathon Plans
 - Build and release KlayOracle Node V1.0 for testnet
