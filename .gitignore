@@ -1,2 +1,3 @@
 .idea
-node/account/keystore.json
+node/account/UTC-**
+cmd/.env
