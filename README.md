@@ -61,8 +61,46 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 
 # Setup
 
+Create this environment file in `cmd/.env.
+
+```dotenv
+KEYSTORE_PASSWORD=1234567890Abcd
+KEYSTORE_PATH=node/account
+```
+
+Build `kloc command`
+
+```console
+go install ./cmd/kloc/...
+```
+
+Confirm it works by checking version
+
+```console
+kloc version
+```
+
+Create a Klaytn wallet for your Node to fulfill Oracle request with
+
+```console
+kloc node account:create
+```
+
+**NB:** This above steps will soon be optimized when the docker image for the node is built.
+
+
+Get your Node account info
+
+```console
+ kloc node account:info
+```
+
+**NB:** Fund your Node wallet on testnet. Visit https://baobab.wallet.klaytn.foundation/faucet
+
 ## Set Adapter Path for Node
 
 ```markdown
-JOBS_PATH=adapter/jobs go run main.go 
+JOBS_PATH=adapters/jobs
 ```
+
+Add this to your IDE env like Golang or your Terminal albeit temporary.

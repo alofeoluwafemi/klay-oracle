@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/alofeoluwafemi/klay-oracle/node"
 	"log"
 	"os"
@@ -8,7 +9,11 @@ import (
 )
 
 func main() {
-	jobsDir := os.Getenv("JOBS_PATH")
+	jobsDir, ok := os.LookupEnv("JOBS_PATH")
+	if !ok {
+		fmt.Fprintln(os.Stderr, "JOBS_PATH is not set")
+		os.Exit(1)
+	}
 
 	wd, err := os.Getwd()
 	if err != nil {
