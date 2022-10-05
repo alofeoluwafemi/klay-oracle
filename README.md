@@ -86,8 +86,26 @@ Create a Klaytn wallet for your Node to fulfill Oracle request with
 kloc node account:create
 ```
 
-**NB:** This above steps will soon be optimized when the docker image for the node is built.
+**Output:**
 
+For New Account
+
+```console
+2022/10/05 14:14:24 Using existing account...
+2022/10/05 14:14:27 Wallet successfully created.
+2022/10/05 14:14:27 Node wallet address 0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7. 
+Visit https://baobab.wallet.klaytn.foundation/faucet to fund your node before your node can fufill Oracle request
+```
+
+For Existing Account
+
+```console
+2022/10/05 14:14:24 Generating new account...
+2022/10/05 14:14:27 Wallet successfully created.
+2022/10/05 14:14:27 Node wallet address 0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7. 
+Visit https://baobab.wallet.klaytn.foundation/faucet to fund your node before your node can fufill Oracle request
+
+```
 
 Get your Node account info
 

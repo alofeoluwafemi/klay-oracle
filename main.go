@@ -2,26 +2,27 @@ package main
 
 import (
 	"fmt"
-	"github.com/alofeoluwafemi/klay-oracle/node"
-	"log"
+	"github.com/alofeoluwafemi/klay-oracle/node/klocaccount"
+	"github.com/joho/godotenv"
 	"os"
-	"path/filepath"
+	"path"
 )
 
 func main() {
-	jobsDir, ok := os.LookupEnv("JOBS_PATH")
-	if !ok {
-		fmt.Fprintln(os.Stderr, "JOBS_PATH is not set")
+	wd, err := os.Getwd()
+	if err != nil {
+		fmt.Printf("%v",err)
 		os.Exit(1)
 	}
 
-	wd, err := os.Getwd()
+	err = godotenv.Load(path.Join(wd,"cmd",".env"))
 	if err != nil {
-		log.Fatalf("%v", err)
+		fmt.Printf("Error loading .env file")
+		os.Exit(1)
 	}
 
-	jobsPath := filepath.Join(wd, jobsDir)
+	created, keyPath := klocaccount.IsCreated()
 
-	node.Boot(jobsPath)
-	node.Run()
+	fmt.Println(created)
+	fmt.Println(keyPath)
 }

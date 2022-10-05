@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
-	"log"
 	"os"
 	"path"
 )
@@ -12,12 +11,14 @@ import (
 func main() {
 	wd, err := os.Getwd()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		fmt.Printf("%v",err)
+		os.Exit(1)
 	}
 
 	err = godotenv.Load(path.Join(wd,"cmd",".env"))
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		fmt.Printf("Error loading .env file")
+		os.Exit(1)
 	}
 
 	var klocCmd = &cobra.Command{
@@ -28,9 +29,7 @@ func main() {
 	}
 
 	klocCmd.AddCommand(versionCmd)
-	klocCmd.AddCommand(newNodeAccountCmd())
-	//klocCmd.AddCommand(nodeAccountSummary)
-	//klocCmd.AddCommand(nodeBalanceCmd())
+	klocCmd.AddCommand(NodeAccountCmd())
 	//klocCmd.AddCommand(listJobsCmd())
 
 	err = klocCmd.Execute()
