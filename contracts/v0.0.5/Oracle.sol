@@ -59,7 +59,7 @@ contract Oracle is OracleInterface {
 
         Request memory request = requests[requestId];
 
-        (bool success, ) = request.callBackContract.call(abi.encodePacked(request.callbackFunctionId, data));
+        (bool success, ) = request.callBackContract.call(abi.encodeWithSelector(request.callbackFunctionId, data));
 
         return success;
     }

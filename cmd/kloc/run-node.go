@@ -10,25 +10,9 @@ import (
 )
 
 func runNode() *cobra.Command {
-	var newAccountCmd = &cobra.Command{
-		Use:   "node",
-		Short: "Run node",
-		PreRunE: func(cmd *cobra.Command, args []string) error {
-			return incorrectUsageErr()
-		},
-		Run: func(cmd *cobra.Command, args []string) {
-		},
-	}
-
-	newAccountCmd.AddCommand(newKeyStore())
-
-	return newAccountCmd
-}
-
-func watch() *cobra.Command {
 	var cmd = &cobra.Command{
-		Use:   "oracle:watch",
-		Short: "Start watching for requests to fulfill",
+		Use:   "run:watch",
+		Short: "Start watching to requests Oracle fulfill",
 		Run: func(cmd *cobra.Command, args []string) {
 			jobsDir, ok := os.LookupEnv("JOBS_PATH")
 			if !ok {

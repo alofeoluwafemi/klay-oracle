@@ -12,6 +12,7 @@ import (
 	"github.com/klaytn/klaytn/common"
 	"log"
 	"math/rand"
+	"strconv"
 )
 
 func Boot(jobsPath string) {
@@ -20,8 +21,6 @@ func Boot(jobsPath string) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-
-	//fmt.Printf("Jobs: %+v\n",Jobs)
 
 	LoadReducers()
 }
@@ -63,7 +62,6 @@ func Run() {
 					if err != nil {
 						log.Printf("Error parsing event log: %v\n", err)
 					}else{
-
 						log.Printf("Calling Job of Adapter ID %v\n", event.AdapterId)
 						log.Printf("With Request ID %v\n", event.RequestId)
 
@@ -76,16 +74,27 @@ func Run() {
 							fmt.Printf("\nResponse for Oracle %v\n",selected)
 
 							_, trxOpts := klocaccount.LoadAccount()
-							data := [32]byte{}
-							copy(data[:], []byte(selected))
+
+							var hexSelected string
+
+							intSelected, err := strconv.ParseInt(selected,10, 64)
+							if err != nil {
+								log.Printf("Error parsing voted result %v due to %v\n", selected,  err)
+
+								hexSelected = strconv.FormatInt(0, 16)
+							}else{
+								hexSelected = strconv.FormatInt(intSelected, 16)
+							}
+
+							data := common.HexToHash(hexSelected)
 
 							trx, err := oracle.FulfillOracleRequest(trxOpts, event.RequestId, data)
 							if err != nil {
-								log.Printf("Error Fulfilling OracleRequest %v with data %v. reason %v\n", job.Oracle, data, err)
+								log.Printf("Error Fulfilling OracleRequest %v with data %v. reason %v\n", job.Oracle, data, err.Error())
 							}else{
-								log.Printf("Node called Oracle %v with result %v\n",job.Oracle, selected)
-								log.Printf("Transaction Hash %v, Nonce %v", trx.Hash().Hex(), trx.Nonce())
-								log.Printf("Transaction Data %v", trx.Data())
+								log.Printf("Node called Oracle %v with result %v and data %v\n",job.Oracle, selected, data)
+								log.Printf("Transaction Hash %v, Nonce %v\n", trx.Hash().Hex(), trx.Nonce())
+								log.Printf("Transaction Data %v\n", trx.Data())
 							}
 
 						}
@@ -99,6 +108,12 @@ func Run() {
 
 	}
 
+}
+
+func bytes32FromString(s string) [32]byte {
+	var b32 [32]byte
+	copy(b32[:], s)
+	return b32
 }
 
 func (job Job) process() []string {

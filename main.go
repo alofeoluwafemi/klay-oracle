@@ -13,11 +13,11 @@ import (
 func main() {
 	wd, err := os.Getwd()
 	if err != nil {
-		fmt.Printf("%v",err)
+		fmt.Printf("%v", err)
 		os.Exit(1)
 	}
 
-	err = godotenv.Load(path.Join(wd,"cmd",".env"))
+	err = godotenv.Load(path.Join(wd, "cmd", ".env"))
 	if err != nil {
 		fmt.Printf("Error loading .env file")
 		os.Exit(1)

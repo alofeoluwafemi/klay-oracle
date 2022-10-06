@@ -2,7 +2,7 @@
   "active": true,
   "name": "RAND",
   "job_type": "RANDOM_NUMBER",
-  "adapter_id": "550a752a-4351-11ed-b878-0242ac120002",
+  "adapter_id": "550a752a435111edb8780242ac120002",
   "oracle": "0x3472059945ee170660a9A97892a3cf77857Eba3A",
   "feeds": [
     {

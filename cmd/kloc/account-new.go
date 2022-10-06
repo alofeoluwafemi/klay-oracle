@@ -10,8 +10,8 @@ import (
 	"os"
 )
 
-func NodeAccountCmd() *cobra.Command {
-	var accountCmd = &cobra.Command{
+func NodeCmd() *cobra.Command {
+	var nodeCmd = &cobra.Command{
 		Use:   "node",
 		Short: "Wallet for node usage",
 		PreRunE: func(cmd *cobra.Command, args []string) error {
@@ -21,10 +21,11 @@ func NodeAccountCmd() *cobra.Command {
 		},
 	}
 
-	accountCmd.AddCommand(newKeyStore())
-	accountCmd.AddCommand(accountInfo())
+	nodeCmd.AddCommand(newKeyStore())
+	nodeCmd.AddCommand(accountInfo())
+	nodeCmd.AddCommand(runNode())
 
-	return accountCmd
+	return nodeCmd
 }
 
 func newKeyStore() *cobra.Command {

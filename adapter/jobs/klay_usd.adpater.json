@@ -3,7 +3,7 @@
   "name": "KLAY_USD",
   "job_type": "DATA_FEED",
   "adapter_id": "efbdab54419511edb8780242ac120002",
-  "oracle": "0x8de29E437b5e64D0a8C49208c90cF25f66Deb6E2",
+  "oracle": "0x02a89bcb962928eDD62E8023D35f2531A119b9A7",
   "feeds": [
     {
       "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=KLAY&tsyms=USD",
@@ -18,7 +18,7 @@
         },
         {
           "function": "MUL",
-          "args": [1000000000000000000]
+          "args": [1000000000]
         }
       ]
     },
@@ -34,7 +34,7 @@
         },
         {
           "function": "MUL",
-          "args": [1000000000000000000]
+          "args": [1000000000]
         }
       ]
     }

@@ -29,7 +29,7 @@ func main() {
 	}
 
 	klocCmd.AddCommand(versionCmd)
-	klocCmd.AddCommand(NodeAccountCmd())
+	klocCmd.AddCommand(NodeCmd())
 	//klocCmd.AddCommand(listJobsCmd())
 
 	err = klocCmd.Execute()

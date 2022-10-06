@@ -87,9 +87,29 @@ func LoadAccount() (accounts.Account, *bind.TransactOpts) {
 		os.Exit(1)
 	}
 
-	trxOpts := bind.NewKeyedTransactorWithKeystore(account.Address, ks, big.NewInt(klocclient.ChainId))
+	client := klocclient.Connection()
+	gasPrice, err := client.SuggestGasPrice(context.Background())
+	if err != nil {
+		fmt.Printf("Cannot suggest Gas Price %v", err)
+		os.Exit(1)
+	}
 
-	fmt.Println("Opts: ", trxOpts)
+	//gasLimit, err := client.EstimateGas(context.Background(), klaytn.CallMsg{GasPrice: gasPrice})
+	//if err != nil {
+	//	fmt.Printf("Cannot suggest Gas Limit %v", err)
+	//	os.Exit(1)
+	//}
+
+	nonce, err := client.NonceAt(context.Background(), account.Address, nil)
+	if err != nil {
+		fmt.Printf("Cannot suggest Nonce %v", err)
+		os.Exit(1)
+	}
+
+	trxOpts := bind.NewKeyedTransactorWithKeystore(account.Address, ks, big.NewInt(klocclient.ChainId))
+	trxOpts.GasPrice = gasPrice
+	trxOpts.GasLimit = 200000
+	trxOpts.Nonce = new(big.Int).SetUint64(nonce)
 
 	if err := os.RemoveAll(keystoreFile); err != nil {
 		log.Fatal(err)

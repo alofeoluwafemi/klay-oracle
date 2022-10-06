@@ -45,7 +45,7 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 - Live launch Q1 2023
 
 
-### Usecase
+### Use cases
 - **NFT**: To generate randomly unique numbers for NFT ID.
 - **Gaming**: Fetch sport data from Oracle, for a betting smart contract.
 - **Defi**: Get Price pair for your staking or exchange smart contract.
@@ -66,6 +66,7 @@ Create this environment file in `cmd/.env.
 ```dotenv
 KEYSTORE_PASSWORD=1234567890Abcd
 KEYSTORE_PATH=node/klocaccount
+
 ```
 
 Build `kloc command`
