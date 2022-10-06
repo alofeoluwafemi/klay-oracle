@@ -33,7 +33,7 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 | KlayOracle v0.0.5 Oracle Contract   | Done        | https://bit.ly/3SMqPGY      |
 | KlayOracle v0.0.5 Node   | In Progress        | https://bit.ly/3SMqPGY      |
 | Developer Documentation   | In Progress        | https://bit.ly/3SMqPGY      |
-| KlayOracle Baobab Deploy   | Pending        | -      |
+| KlayOracle Baobab Deploy   | Done        | -      |
 | Video Tutorial   | Pending        | -      |
 
 ### Post Hackathon Plans
@@ -51,7 +51,7 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 - **Defi**: Get Price pair for your staking or exchange smart contract.
 
 ### Architechture
-![KlayOracle Architechture](https://s3.amazonaws.com/alofe.oluwafemi/KlayOracle+Architechture.jpg)
+![KlayOracle Architechture](https://www.klayoracle.com/images/define.png)
 
 ### Components
 - **Adapter**
