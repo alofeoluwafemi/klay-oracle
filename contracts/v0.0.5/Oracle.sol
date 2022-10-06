@@ -20,9 +20,9 @@ contract Oracle is OracleInterface {
 
     Request[] public requests;
 
-    event NewOracleRequest(string indexed adapterId, uint indexed requestId);
+    event NewOracleRequest(string adapterId, uint indexed requestId);
 
-    constructor(address _nodeAddress, string memory _adapterId) {
+    constructor(address _nodeAddress,string memory _adapterId) {
         nodeAddress = _nodeAddress;
         adapterId = _adapterId;
     }
@@ -55,9 +55,11 @@ contract Oracle is OracleInterface {
         bytes32 data
     ) external override returns(bool) {
 
+        require(msg.sender == nodeAddress,"Oracle: Permission needed for node");
+
         Request memory request = requests[requestId];
 
-       (bool success, ) = request.callBackContract.call(abi.encodePacked(request.callbackFunctionId, data));
+        (bool success, ) = request.callBackContract.call(abi.encodePacked(request.callbackFunctionId, data));
 
         return success;
     }

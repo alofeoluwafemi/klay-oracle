@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/alofeoluwafemi/klay-oracle/node/klocclient"
 	"github.com/klaytn/klaytn/accounts"
+	"github.com/klaytn/klaytn/accounts/abi/bind"
 	"github.com/klaytn/klaytn/accounts/keystore"
 	"io/fs"
 	"log"
@@ -64,7 +65,7 @@ func IsCreated() (bool, string) {
 	return false, ""
 }
 
-func LoadAccount() accounts.Account {
+func LoadAccount() (accounts.Account, *bind.TransactOpts) {
 	_, keystoreFile := IsCreated()
 	_, password, keyStorePath := Variables()
 
@@ -80,16 +81,26 @@ func LoadAccount() accounts.Account {
 		os.Exit(1)
 	}
 
+	err = ks.Unlock(account, password)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+
+	trxOpts := bind.NewKeyedTransactorWithKeystore(account.Address, ks, big.NewInt(klocclient.ChainId))
+
+	fmt.Println("Opts: ", trxOpts)
+
 	if err := os.RemoveAll(keystoreFile); err != nil {
 		log.Fatal(err)
 	}
 
-	return account
+	return account, trxOpts
 }
 
 func Balance() string {
 	conn := klocclient.Connection()
-	account := LoadAccount()
+	account, _ := LoadAccount()
 
 	balance, err := conn.BalanceAt(context.Background(), account.Address ,nil)
 	if err != nil {

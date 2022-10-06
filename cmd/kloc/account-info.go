@@ -13,7 +13,7 @@ func accountInfo() *cobra.Command {
 		Short: "Display wallet info for node",
 		Run: func(cmd *cobra.Command, args []string) {
 
-			account := klocaccount.LoadAccount()
+			account, _ := klocaccount.LoadAccount()
 
 			log.Printf("Account: %v\n", account.Address.String())
 

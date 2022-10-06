@@ -44,7 +44,7 @@ func newKeyStore() *cobra.Command {
 			if exist == true {
 				log.Println("Using existing account...")
 
-				account = klocaccount.LoadAccount()
+				account, _ = klocaccount.LoadAccount()
 			}else{
 				log.Println("Generating new account...")
 

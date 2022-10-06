@@ -2,8 +2,8 @@
   "active": true,
   "name": "KLAY_USD",
   "job_type": "DATA_FEED",
-  "adapter_id": "efbdab54-4195-11ed-b878-0242ac120002",
-  "oracle": "0xDC77A7A497C9a9A7C086E3d57bFb753fF2cFa414",
+  "adapter_id": "efbdab54419511edb8780242ac120002",
+  "oracle": "0x8de29E437b5e64D0a8C49208c90cF25f66Deb6E2",
   "feeds": [
     {
       "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=KLAY&tsyms=USD",

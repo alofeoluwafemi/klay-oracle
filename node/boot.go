@@ -1,8 +1,15 @@
 package node
 
 import (
+	"context"
 	"fmt"
+	"github.com/alofeoluwafemi/klay-oracle/node/klocaccount"
+	"github.com/alofeoluwafemi/klay-oracle/node/klocclient"
+	"github.com/alofeoluwafemi/klay-oracle/node/klocoracle"
 	"github.com/go-resty/resty/v2"
+	"github.com/klaytn/klaytn"
+	"github.com/klaytn/klaytn/blockchain/types"
+	"github.com/klaytn/klaytn/common"
 	"log"
 	"math/rand"
 )
@@ -14,33 +21,84 @@ func Boot(jobsPath string) {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(Jobs)
+	//fmt.Printf("Jobs: %+v\n",Jobs)
 
 	LoadReducers()
 }
 
 func Run() {
-	//Loop through Jobs
-	//Listen to Oracle for a Certain Event on Address
-	//When Event fires
-
-	// requestId := 0
-	adapterId := "efbdab54-4195-11ed-b878-0242ac120002"
+	conn := klocclient.Connection()
 
 	for i := 0; i < len(Jobs); i++ {
-		if job := Jobs[i]; job.AdapterId == adapterId {
-			jobResponses := job.process()
-			randomIndex := rand.Intn(len(jobResponses))
-			selected := jobResponses[randomIndex]
-			//Get mean and call oracle with response
-			fmt.Printf("\nResponse for Oracle %v\n",selected)
+
+		if job := Jobs[i]; job.Active == true {
+
+			log.Printf("Watching active Job %v\n", job.Name)
+			log.Printf("Listening to Oracle %v\n", job.Oracle)
+
+			oracle, err := klocoracle.NewOracle(common.HexToAddress(job.Oracle), conn)
+
+			if err != nil {
+				log.Printf("Error with job %v, cannot get Oracle due to %v", job.Name, err)
+			}
+
+			oracleAddress := common.HexToAddress(job.Oracle)
+			query := klaytn.FilterQuery{
+				Addresses: []common.Address{oracleAddress},
+			}
+
+			logs := make(chan types.Log)
+			subscription, err := conn.SubscribeFilterLogs(context.Background(), query, logs)
+			if err != nil {
+				log.Printf("Oracle Subscription error: %v",err)
+				log.Printf("Skipping Oracle: %v",err)
+			}
+
+			for {
+				select {
+				case err := <-subscription.Err():
+					log.Printf("Error while listening for Oracle event: %v", err)
+				case vLog := <-logs:
+					event, err := oracle.ParseNewOracleRequest(vLog)
+					if err != nil {
+						log.Printf("Error parsing event log: %v\n", err)
+					}else{
+
+						log.Printf("Calling Job of Adapter ID %v\n", event.AdapterId)
+						log.Printf("With Request ID %v\n", event.RequestId)
+
+						if job := Jobs[i]; job.AdapterId == event.AdapterId {
+							jobResponses := job.process()
+							randomIndex := rand.Intn(len(jobResponses))
+							selected := jobResponses[randomIndex]
+
+							//Get mean and call oracle with response
+							fmt.Printf("\nResponse for Oracle %v\n",selected)
+
+							_, trxOpts := klocaccount.LoadAccount()
+							data := [32]byte{}
+							copy(data[:], []byte(selected))
+
+							trx, err := oracle.FulfillOracleRequest(trxOpts, event.RequestId, data)
+							if err != nil {
+								log.Printf("Error Fulfilling OracleRequest %v with data %v. reason %v\n", job.Oracle, data, err)
+							}else{
+								log.Printf("Node called Oracle %v with result %v\n",job.Oracle, selected)
+								log.Printf("Transaction Hash %v, Nonce %v", trx.Hash().Hex(), trx.Nonce())
+								log.Printf("Transaction Data %v", trx.Data())
+							}
+
+						}
+
+					}
+
+				}
+			}
+
 		}
+
 	}
 
-	// Make Request to URL Based on Type & Headers
-	// Perform Reducer Action
-	// Call Oracle with Response
-	// Keep Listening for Further event
 }
 
 func (job Job) process() []string {

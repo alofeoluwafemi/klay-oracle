@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/alofeoluwafemi/klay-oracle/node/klocaccount"
+	"github.com/alofeoluwafemi/klay-oracle/node"
 	"github.com/joho/godotenv"
+	"log"
 	"os"
 	"path"
+	"path/filepath"
 )
 
 func main() {
@@ -21,8 +23,19 @@ func main() {
 		os.Exit(1)
 	}
 
-	created, keyPath := klocaccount.IsCreated()
+	jobsDir, ok := os.LookupEnv("JOBS_PATH")
+	if !ok {
+		fmt.Fprintln(os.Stderr, "JOBS_PATH is not set")
+		os.Exit(1)
+	}
 
-	fmt.Println(created)
-	fmt.Println(keyPath)
+	wd, err = os.Getwd()
+	if err != nil {
+		log.Fatalf("%v", err)
+	}
+
+	jobsPath := filepath.Join(wd, jobsDir)
+
+	node.Boot(jobsPath)
+	node.Run()
 }
