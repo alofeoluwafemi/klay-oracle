@@ -3,31 +3,31 @@ pragma solidity ^0.8.7;
 
 import "./Oracle.sol";
 
-contract RandomNumberConsumer {
+contract PriceConsumer {
 
     Oracle public oracleAddress;
 
-    uint public rand;
+    uint public price;
 
-    function requestRandomNumber(
+    function requestKlayPrice(
         Oracle _oracleAddress,
         string memory _adapterId
     ) external returns(bool) {
 
         oracleAddress = _oracleAddress;
 
-        oracleAddress.newOracleRequest(this.setRandomNumber.selector, _adapterId, address(this));
+        oracleAddress.newOracleRequest(this.setKLAYUSD.selector, _adapterId, address(this));
 
         return true;
     }
 
-    function setRandomNumber(
-        uint _rand
+    function setKLAYUSD(
+        uint _price
     ) external {
 
-        require(msg.sender == address(oracleAddress),"RN Consumer: Permission Denied");
+        require(msg.sender == address(oracleAddress),"Consumer: Permission Denied");
 
-        rand = _rand;
+        price = _price;
     }
 
 }

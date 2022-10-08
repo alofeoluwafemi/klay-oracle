@@ -61,15 +61,17 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 
 # Setup
 
-Create this environment file in `cmd/.env.
+### Create this environment file in `cmd/.env.
 
 ```dotenv
 KEYSTORE_PASSWORD=1234567890Abcd
 KEYSTORE_PATH=node/klocaccount
-
+JOBS_PATH=adapter/jobs
 ```
 
-Build `kloc command`
+`KEYSTORE_PASSWORD` and `KEYSTORE_PATH` is the password to unlock your Node wallet and path to store your node wallet keystore file.
+
+### Build `kloc command`
 
 ```console
 go install ./cmd/kloc/...
@@ -81,7 +83,7 @@ Confirm it works by checking version
 kloc version
 ```
 
-Create a Klaytn wallet for your Node to fulfill Oracle request with
+### Create a Klaytn wallet for your Node to fulfill Oracle request with
 
 ```console
 kloc node account:create
@@ -125,67 +127,23 @@ Output
 **NB:** Fund your Node wallet on testnet. Visit https://baobab.wallet.klaytn.foundation/faucet
 
 
-## Set Adapter Path for Node
+### Deploy Oracle Contract
 
-```markdown
-JOBS_PATH=adapters/jobs
-```
+**OracleInterface Contract:** https://remix.ethereum.org/#version=soljson-v0.8.7+commit.e28d00a7.js&optimize=false&runs=200&gist=5ee9cf2d97d51ab47fddd185b6923522
 
-Add this to your IDE env like Golang or your Terminal albeit temporary until a better way is introduced in the docs.
+**Oracle Contract:** https://remix.ethereum.org/#version=soljson-v0.8.7+commit.e28d00a7.js&optimize=false&runs=200&gist=13d672362bd84375b51c90b2a7ee5b7b
 
-## Deploy Oracle Contract
+**PriceConsumer Contract:** https://remix.ethereum.org/#version=soljson-v0.8.7+commit.e28d00a7.js&optimize=false&runs=200&gist=b76e7e86cb82f5f6ad54fcc2a1545f44&evmVersion=null
 
-Using this https://ide.klaytn.foundation/#optimize=false&runs=200&evmVersion=london&version=soljson-v0.8.7+commit.e28d00a7.js , You should deploy your Oracle as a node runner.
+Deploy the Oracle contract, pass your node address. You can get your node address by running `kloc node account:info` and adapter id of `adapter/jobs/klay_usd.adapter.json` to the Oracle constructor.
 
-Make sure to pass the Node wallet address as the first parameters to the constructor and the adapterId for the job this Oracle will be handling as the second parameter. 
-You can deploy multiple Oracle, since a single node can handle as many Oracles as the Node runner CPU can handle.
+Copy the Oracle address and replace it in the `adapter/jobs/klay_usd.adapter.json` file. Deploy the Price consumer contract also and after wards run `kloc node run:watch` to start the node to start fulfilling Oracle requests.
 
-**NB:** Remember to update the oracle address in your adapter.
+Call the function `requestKlayPrice` and pass the node address and adapter id, if you check the running terminal you will se logs of the Oracle request procssing.
 
-### Run the node
+Call the `price` getter function to see the price response.
 
-```console
-kloc node watch
-```
 
-All jobs with status active and with Valid Oracle address will start to get watched for requests made to the Oracle address.
+![Deploy Klaytn Oracle](https://s3.amazonaws.com/alofe.oluwafemi/Screen+Shot+2022-10-08+at+2.57.47+PM.png)
 
-## Request KLAY USD Price from a consumer contract
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.7;
-
-import "./Oracle.sol";
-
-contract Consumer {
-
-    Oracle public oracleAddress;
-
-    uint public price;
-
-    function requestEthereumPrice(
-        Oracle _oracleAddress,
-        string memory _adapterId
-    ) external returns(bool) {
-
-        oracleAddress = _oracleAddress;
-
-        oracleAddress.newOracleRequest(this.setETHUSD.selector, _adapterId, address(this));
-
-        return true;
-    }
-
-    function setKLAYUSD(
-        uint _price
-    ) external {
-
-        require(msg.sender == address(oracleAddress),"Consumer: Permission Denied");
-
-        price = _price;
-    }
-
-}
-```
-
-When requestiing 
+![Deploy PriceConsumer Klaytn](https://s3.amazonaws.com/alofe.oluwafemi/Screen+Shot+2022-10-08+at+2.57.57+PM.png)

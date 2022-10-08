@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "name": "RAND",
   "job_type": "RANDOM_NUMBER",
   "adapter_id": "550a752a435111edb8780242ac120002",
