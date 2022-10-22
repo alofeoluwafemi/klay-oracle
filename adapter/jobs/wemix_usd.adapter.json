@@ -1,0 +1,42 @@
+{
+  "active": true,
+  "name": "WEMIX_USD",
+  "job_type": "DATA_FEED",
+  "adapter_id": "be498ee0521011edbdc30242ac120002",
+  "oracle": "0xb56c6b973688A8fbA3D6bB536b7CdFFC7b46252A",
+  "feeds": [
+    {
+      "url": "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=WEMIX&tsyms=USD",
+      "headers": [
+        {"Content-Type" :  "application/json"}
+      ],
+      "request_type": "GET",
+      "reducers": [
+        {
+          "function": "PARSE",
+          "args": ["RAW","KLAY","USD","PRICE"]
+        },
+        {
+          "function": "MUL",
+          "args": [1000000000]
+        }
+      ]
+    },
+    {
+      "url": "https://rest.coinapi.io/v1/exchangerate/WEMIX/USD",
+      "headers": [
+        {"X-CoinAPI-Key": "209D7E0E-9330-4706-B693-6E2ED10279A5"}
+      ],
+      "reducers": [
+        {
+          "function": "PARSE",
+          "args": ["rate"]
+        },
+        {
+          "function": "MUL",
+          "args": [1000000000]
+        }
+      ]
+    }
+  ]
+}

@@ -71,7 +71,7 @@ JOBS_PATH=adapter/jobs
 
 `KEYSTORE_PASSWORD` and `KEYSTORE_PATH` is the password to unlock your Node wallet and path to store your node wallet keystore file.
 
-### Build `kloc command`
+### Build kloc Command
 
 ```console
 go install ./cmd/kloc/...
@@ -139,7 +139,7 @@ Deploy the Oracle contract, pass your node address. You can get your node addres
 
 Copy the Oracle address and replace it in the `adapter/jobs/klay_usd.adapter.json` file. Deploy the Price consumer contract also and after wards run `kloc node run:watch` to start the node to start fulfilling Oracle requests.
 
-Call the function `requestKlayPrice` and pass the node address and adapter id, if you check the running terminal you will se logs of the Oracle request procssing.
+Call the function `requestKlayPrice` and pass the node address and adapter id, if you check the running terminal you will see logs of the Oracle request procssing.
 
 Call the `price` getter function to see the price response.
 
