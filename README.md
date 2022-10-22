@@ -4,7 +4,9 @@
 
 ## Learn More
 
-[Visit KlayOracle Website](https://klayoracle.com)
+**Website**: https://klayoracle.com
+
+**Documentation**: https://klayoracle.gitbook.io/klayoracle-documentation/
 
 ### What is KlayOracle
 
