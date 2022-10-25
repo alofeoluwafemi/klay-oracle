@@ -32,7 +32,7 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 | KlayOracle v0.0.5 Node   | Done        | https://bit.ly/3SMqPGY      |
 | Developer Documentation   | Done        | https://bit.ly/3SMqPGY      |
 | KlayOracle Baobab Deploy   | Done        | -      |
-| Video Tutorial   | Pending        | -      |
+| Video Tutorial   | Done        | https://www.youtube.com/watch?v=nC-LlVKuNL0      |
 
 ### Post Hackathon Plans
 - Build and release KlayOracle Node V1.0 for testnet
