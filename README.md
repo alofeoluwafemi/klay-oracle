@@ -59,6 +59,7 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 - **Adapter**
 - **Oracle Contract**
 - **KlayOracle Node**
+- **Kloc Command**
 
 
 # Setup
