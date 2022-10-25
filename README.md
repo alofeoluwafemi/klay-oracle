@@ -1,6 +1,6 @@
 
 
-![What is KlayOracle](https://github.com/alofeoluwafemi/klay-oracle/docs/img/Hero.jpg)
+![What is KlayOracle](https://github.com/alofeoluwafemi/klay-oracle/blob/development/docs/img/Hero.jpg)
 
 ## Learn More
 
@@ -147,6 +147,6 @@ Call the function `requestKlayPrice` and pass the node address and adapter id, i
 Call the `price` getter function to see the price response.
 
 
-![Deploy Klaytn Oracle](https://github.com/alofeoluwafemi/klay-oracle/docs/img/Screen+Shot+2022-10-08+at+2.57.47+PM.png)
+![Deploy Klaytn Oracle](https://github.com/alofeoluwafemi/klay-oracle/blob/development/docs/img/Screenshot-57.png)
 
-![Deploy PriceConsumer Klaytn](https://github.com/alofeoluwafemi/klay-oracle/docs/img/Screen+Shot+2022-10-08+at+2.57.57+PM.png)
+![Deploy PriceConsumer Klaytn](https://github.com/alofeoluwafemi/klay-oracle/blob/development/docs/img/Screenshot-47.png)
