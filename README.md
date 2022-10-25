@@ -1,7 +1,3 @@
-
-
-![What is KlayOracle](https://github.com/alofeoluwafemi/klay-oracle/blob/development/docs/img/Hero.jpg)
-
 ## Learn More
 
 **Website**: https://klayoracle.com
