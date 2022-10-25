@@ -29,8 +29,8 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 | KlayOracle Website   | Done        | https://klayoracle.com      |
 | KlayOracle v0.0.5 Adapter   | Done        | https://bit.ly/3C8fLNy      |
 | KlayOracle v0.0.5 Oracle Contract   | Done        | https://bit.ly/3SMqPGY      |
-| KlayOracle v0.0.5 Node   | In Progress        | https://bit.ly/3SMqPGY      |
-| Developer Documentation   | In Progress        | https://bit.ly/3SMqPGY      |
+| KlayOracle v0.0.5 Node   | Done        | https://bit.ly/3SMqPGY      |
+| Developer Documentation   | Done        | https://bit.ly/3SMqPGY      |
 | KlayOracle Baobab Deploy   | Done        | -      |
 | Video Tutorial   | Pending        | -      |
 
