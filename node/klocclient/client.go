@@ -8,7 +8,7 @@ import (
 
 const (
 	ChainId = 1001
-	RPCUrl = "wss://public-node-api.klaytnapi.com/v1/baobab/ws"
+	RPCUrl = "wss://api.baobab.klaytn.net:8652"
 )
 func Connection() *client.Client {
 	conn, err := client.Dial(RPCUrl)

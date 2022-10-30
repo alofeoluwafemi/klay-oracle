@@ -2,6 +2,13 @@ module github.com/alofeoluwafemi/klay-oracle
 
 go 1.19
 
+replace (
+	github.com/alofeoluwafemi/klay-oracle/node => /Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/node
+	github.com/alofeoluwafemi/klay-oracle/node/klocaccount => /Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/node/klocaccount
+	github.com/alofeoluwafemi/klay-oracle/node/klocclient => /Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/node/klocclient
+	github.com/alofeoluwafemi/klay-oracle/node/klocoracle => /Users/drewhyte/Sites/BLOCKCHAIN/klay-oracle/node/klocoracle
+)
+
 require (
 	github.com/go-resty/resty/v2 v2.7.0
 	github.com/joho/godotenv v1.4.0
