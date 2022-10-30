@@ -13,3 +13,6 @@
     - Vote data feed to be added
     - Vote platform proposal changes
   - Import gitbook documentation into platform
+- Sign messages sent by Node to Oracle with private key and confirm signature
+- Write test for components and packages
+- Setup CI/CD and Dockerize the Node

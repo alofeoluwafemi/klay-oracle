@@ -17,7 +17,7 @@ func main() {
 
 	err = godotenv.Load(path.Join(wd,"cmd",".env"))
 	if err != nil {
-		fmt.Printf("Error loading .env file")
+		fmt.Printf("Error loading .env file: %v", err)
 		os.Exit(1)
 	}
 

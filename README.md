@@ -82,7 +82,7 @@ Confirm it works by checking version
 kloc version
 ```
 
-### Create a Klaytn wallet for your Node to fulfill Oracle request with
+### Create a Klaytn wallet for your Node to fulfill Oracle requests with
 
 ```console
 kloc node account:create
