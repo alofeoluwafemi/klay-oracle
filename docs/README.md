@@ -17,9 +17,7 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 - Random Numbers
 - Data Feed
 
-<figure><img src=".gitbook/assets/define.png" alt=""><figcaption></figcaption></figure>
-
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)]([https://youtu.be/vt5fpE0bzSY](https://www.youtube.com/embed/nC-LlVKuNL))
+[![Watch the video]([https://i.imgur.com/vKb2F1B.png](https://github.com/alofeoluwafemi/klay-oracle/blob/development/docs/.gitbook/assets/define.png))]([https://youtu.be/vt5fpE0bzSY](https://www.youtube.com/embed/nC-LlVKuNL))
 
 
 {% embed url="https://www.youtube.com/watch?v=nC-LlVKuNL0" %}
