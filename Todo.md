@@ -16,3 +16,4 @@
 - Sign messages sent by Node to Oracle with private key and confirm signature
 - Write test for components and packages
 - Setup CI/CD and Dockerize the Node
+- Add Make file
