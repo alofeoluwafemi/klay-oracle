@@ -153,11 +153,11 @@ Call the `price` getter function to see the price response.
 [0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7](https://baobab.scope.klaytn.com/account/0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7?tabId=txList)
 
 ### KLAY/USD
-Oracle: [0xCC4377b912c4517Fe895817c6a7c6937D92A70B3](https://baobab.scope.klaytn.com/account/0xCC4377b912c4517Fe895817c6a7c6937D92A70B3)
-Adapter ID: efbdab54419511edb8780242ac120002
+Oracle: [0xCC4377b912c4517Fe895817c6a7c6937D92A70B3](https://baobab.scope.klaytn.com/account/0xCC4377b912c4517Fe895817c6a7c6937D92A70B3)  
+Adapter ID: efbdab54419511edb8780242ac120002  
 Price Consumer Sample Contract: [0x8e892CE230eEe07598eed68EA326e308A3d2687D](https://baobab.scope.klaytn.com/account/0x8e892CE230eEe07598eed68EA326e308A3d2687D)
 
 ### WEMIX/USD
-Oracle: [0xb56c6b973688A8fbA3D6bB536b7CdFFC7b46252A](https://baobab.scope.klaytn.com/account/0xb56c6b973688A8fbA3D6bB536b7CdFFC7b46252A)
-Adapter ID: be498ee0521011edbdc30242ac120002
+Oracle: [0xb56c6b973688A8fbA3D6bB536b7CdFFC7b46252A](https://baobab.scope.klaytn.com/account/0xb56c6b973688A8fbA3D6bB536b7CdFFC7b46252A)  
+Adapter ID: be498ee0521011edbdc30242ac120002  
 Price Consumer Sample Contract: [0x6aB624819D2082801bA2d44a64DbE1201b608e4f](https://baobab.scope.klaytn.com/account/0x6aB624819D2082801bA2d44a64DbE1201b608e4f)
