@@ -17,8 +17,12 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 - Random Numbers
 - Data Feed
 
-### Watch Video : How it works
-[![Watch the video](https://github.com/alofeoluwafemi/klay-oracle/blob/development/docs/.gitbook/assets/define.png)](https://www.youtube.com/embed/nC-LlVKuNL)
+### Architechture
+![Watch the video](https://github.com/alofeoluwafemi/klay-oracle/blob/development/docs/.gitbook/assets/define.png)
+
+
+### How it Works 
+https://user-images.githubusercontent.com/7295729/198984762-910136cb-5ed0-4af8-a748-8f3bdcdc0ea9.mov
 
 
 ## Testnet Baobab Price Oracles
