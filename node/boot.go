@@ -13,7 +13,10 @@ import (
 	"log"
 	"math/rand"
 	"strconv"
+	"sync"
 )
+
+var wg sync.WaitGroup
 
 func Boot(jobsPath string) {
 	err := LoadJobs(jobsPath)
@@ -26,88 +29,97 @@ func Boot(jobsPath string) {
 }
 
 func Run() {
-	conn := klocclient.Connection()
+	defer wg.Done()
+
+	wg.Add(len(Jobs))	//It will never be done anyways
 
 	for i := 0; i < len(Jobs); i++ {
 
 		if job := Jobs[i]; job.Active == true {
 
-			log.Printf("Watching active Job %v\n", job.Name)
-			log.Printf("Listening to Oracle %v\n", job.Oracle)
+			go watch(job)
+		}
+	}
 
-			oracle, err := klocoracle.NewOracle(common.HexToAddress(job.Oracle), conn)
+	wg.Wait()
+	log.Printf("Watching all active jobs...")
+}
 
+func watch(job *Job) {
+	conn := klocclient.Connection()
+
+	log.Printf("Watching active Job %v\n", job.Name)
+	log.Printf("Listening to Oracle %v\n", job.Oracle)
+
+	oracle, err := klocoracle.NewOracle(common.HexToAddress(job.Oracle), conn)
+
+	if err != nil {
+		log.Printf("Error with job %v, cannot get Oracle due to %v", job.Name, err)
+	}
+
+	oracleAddress := common.HexToAddress(job.Oracle)
+	query := klaytn.FilterQuery{
+		Addresses: []common.Address{oracleAddress},
+	}
+
+	logs := make(chan types.Log)
+	subscription, err := conn.SubscribeFilterLogs(context.Background(), query, logs)
+	if err != nil {
+		log.Printf("Oracle Subscription error: %v",err)
+		log.Printf("Skipping Oracle: %v",err)
+	}
+
+	for {
+		select {
+		case err := <-subscription.Err():
+			log.Printf("Error while listening for Oracle %v event due to: %v",job.Oracle, err)
+			watch(job)
+		case vLog := <-logs:
+			event, err := oracle.ParseNewOracleRequest(vLog)
 			if err != nil {
-				log.Printf("Error with job %v, cannot get Oracle due to %v", job.Name, err)
-			}
+				log.Printf("Error parsing event log: %v\n", err)
+			}else{
+				log.Printf("Calling Job of Adapter ID %v\n", event.AdapterId)
+				log.Printf("With Request ID %v\n", event.RequestId)
 
-			oracleAddress := common.HexToAddress(job.Oracle)
-			query := klaytn.FilterQuery{
-				Addresses: []common.Address{oracleAddress},
-			}
+				if job.AdapterId == event.AdapterId {
+					jobResponses := job.process()
+					randomIndex := rand.Intn(len(jobResponses))
+					selected := jobResponses[randomIndex]
 
-			logs := make(chan types.Log)
-			subscription, err := conn.SubscribeFilterLogs(context.Background(), query, logs)
-			if err != nil {
-				log.Printf("Oracle Subscription error: %v",err)
-				log.Printf("Skipping Oracle: %v",err)
-			}
+					//Get mean and call oracle with response
+					fmt.Printf("\nResponse for Oracle %v\n",selected)
 
-			for {
-				select {
-				case err := <-subscription.Err():
-					log.Printf("Error while listening for Oracle event: %v", err)
-				case vLog := <-logs:
-					event, err := oracle.ParseNewOracleRequest(vLog)
+					_, trxOpts := klocaccount.LoadAccount()
+
+					var hexSelected string
+
+					intSelected, err := strconv.ParseInt(selected,10, 64)
 					if err != nil {
-						log.Printf("Error parsing event log: %v\n", err)
+						log.Printf("Error parsing voted result %v due to %v\n", selected,  err)
+
+						hexSelected = strconv.FormatInt(0, 16)
 					}else{
-						log.Printf("Calling Job of Adapter ID %v\n", event.AdapterId)
-						log.Printf("With Request ID %v\n", event.RequestId)
+						hexSelected = strconv.FormatInt(intSelected, 16)
+					}
 
-						if job := Jobs[i]; job.AdapterId == event.AdapterId {
-							jobResponses := job.process()
-							randomIndex := rand.Intn(len(jobResponses))
-							selected := jobResponses[randomIndex]
+					data := common.HexToHash(hexSelected)
 
-							//Get mean and call oracle with response
-							fmt.Printf("\nResponse for Oracle %v\n",selected)
-
-							_, trxOpts := klocaccount.LoadAccount()
-
-							var hexSelected string
-
-							intSelected, err := strconv.ParseInt(selected,10, 64)
-							if err != nil {
-								log.Printf("Error parsing voted result %v due to %v\n", selected,  err)
-
-								hexSelected = strconv.FormatInt(0, 16)
-							}else{
-								hexSelected = strconv.FormatInt(intSelected, 16)
-							}
-
-							data := common.HexToHash(hexSelected)
-
-							trx, err := oracle.FulfillOracleRequest(trxOpts, event.RequestId, data)
-							if err != nil {
-								log.Printf("Error Fulfilling OracleRequest %v with data %v. reason %v\n", job.Oracle, data, err.Error())
-							}else{
-								log.Printf("Node called Oracle %v with result %v and data %v\n",job.Oracle, selected, data)
-								log.Printf("Transaction Hash %v, Nonce %v\n", trx.Hash().Hex(), trx.Nonce())
-								log.Printf("Transaction Data %v\n", trx.Data())
-							}
-
-						}
-
+					trx, err := oracle.FulfillOracleRequest(trxOpts, event.RequestId, data)
+					if err != nil {
+						log.Printf("Error Fulfilling OracleRequest %v with data %v. reason %v\n", job.Oracle, data, err.Error())
+					}else{
+						log.Printf("Node called Oracle %v with result %v and data %v\n",job.Oracle, selected, data)
+						log.Printf("Transaction Hash %v, Nonce %v\n", trx.Hash().Hex(), trx.Nonce())
+						log.Printf("Transaction Data %v\n", trx.Data())
 					}
 
 				}
+
 			}
 
 		}
-
 	}
-
 }
 
 func bytes32FromString(s string) [32]byte {

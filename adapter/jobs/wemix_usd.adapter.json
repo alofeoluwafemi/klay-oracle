@@ -14,7 +14,7 @@
       "reducers": [
         {
           "function": "PARSE",
-          "args": ["RAW","KLAY","USD","PRICE"]
+          "args": ["RAW","WEMIX","USD","PRICE"]
         },
         {
           "function": "MUL",
