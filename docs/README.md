@@ -19,6 +19,7 @@ KlayOracle adopts the design used by leading and existing oracles to bring offch
 
 <figure><img src=".gitbook/assets/define.png" alt=""><figcaption></figcaption></figure>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nC-LlVKuNL0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)]([https://youtu.be/vt5fpE0bzSY](https://www.youtube.com/embed/nC-LlVKuNL))
+
 
 {% embed url="https://www.youtube.com/watch?v=nC-LlVKuNL0" %}
