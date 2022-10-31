@@ -27,6 +27,8 @@ https://user-images.githubusercontent.com/7295729/198984762-910136cb-5ed0-4af8-a
 
 ## Testnet Baobab Price Oracles
 
+All contracts have been verified on **Klaytn Baobab Testnet** ✅.
+
 ### Node 
 [0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7](https://baobab.scope.klaytn.com/account/0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7?tabId=txList)
 
