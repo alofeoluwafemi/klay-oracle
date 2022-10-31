@@ -2,7 +2,7 @@
 description: List of currently available Oracles
 ---
 
-# Price Feeds
+# Available Data Feeds
 
 ### Testnet Baobab
 
