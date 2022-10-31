@@ -38,7 +38,7 @@ We envision ourselves as a less complex, less expensive alternative to Chainlink
 
 ## Testnet Baobab Price Oracles
 
-All contracts have been verified on **Klaytn Baobab Testnet** ✅.
+All contracts have been verified on **Klaytn Baobab Testnet**.
 
 ### Node 
 [0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7](https://baobab.scope.klaytn.com/account/0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7?tabId=txList)
