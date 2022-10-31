@@ -147,7 +147,7 @@ Call the `price` getter function to see the price response.
 
 ![Deploy PriceConsumer Klaytn](https://github.com/alofeoluwafemi/klay-oracle/blob/development/docs/img/Screenshot-47.png)
 
-## Testnet Baobab Setup
+## Testnet Baobab Price Oracles
 
 ### Node 
 [0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7](https://baobab.scope.klaytn.com/account/0xcAD0444951A5faB031b62fcF717eCb5a1e8d7Dc7?tabId=txList)
