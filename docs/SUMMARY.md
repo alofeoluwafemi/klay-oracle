@@ -9,3 +9,4 @@
   * [Random Number](use-cases/random-number.md)
   * [Klay/USD Price Feed](use-cases/klay-usd-price-feed.md)
 * [🔗 Github](github.md)
+* [Price Feeds](price-feeds.md)
