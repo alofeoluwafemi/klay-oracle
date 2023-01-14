@@ -1,3 +1,7 @@
+# Migration Notice 🚚
+
+The official KlayOracle github has now moved. To start contributing and following our update, visit https://github.com/KlayOracle.
+
 # About
 
 ### What is KlayOracle
